@@ -17,7 +17,7 @@ class App extends Component {
   firstHandleClick = (e) => {
     e.preventDefault();
     console.log(this.state.flag);
-    if (this.state.flag === 0) {
+    if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
         friends: this.state.friends.sort((a, b) => a.firstName.localeCompare(b.firstName))
@@ -29,20 +29,13 @@ class App extends Component {
         friends: this.state.friends.sort((a, b) => b.firstName.localeCompare(a.firstName))
       })
       this.render();
-    } else if (this.state.flag === -1) {
-      this.setState({
-        flag: 1,
-        friends: this.state.friends.sort((a, b) => a.firstName.localeCompare(b.firstName))
-
-      })
-      this.render();
     }
   }
 
   lastHandleClick = (e) => {
     e.preventDefault();
     console.log(this.state.flag);
-    if (this.state.flag === 0) {
+    if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
         friends: this.state.friends.sort((a, b) => a.lastName.localeCompare(b.lastName))
@@ -54,36 +47,22 @@ class App extends Component {
         friends: this.state.friends.sort((a, b) => b.lastName.localeCompare(a.lastName))
       })
       this.render();
-    } else if (this.state.flag === -1) {
-      this.setState({
-        flag: 1,
-        friends: this.state.friends.sort((a, b) => a.lastName.localeCompare(b.lastName))
-
-      })
-      this.render();
     }
   }
 
   phoneHandleClick = (e) => {
     e.preventDefault();
     console.log(this.state.flag);
-    if (this.state.flag === 0) {
+    if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
-        friends: this.state.friends.sort((a, b) =>  a.phoneNumber-b.phoneNumber)
+        friends: this.state.friends.sort((a, b) => a.phoneNumber - b.phoneNumber)
       })
       this.render();
     } else if (this.state.flag === 1) {
       this.setState({
         flag: -1,
-        friends: this.state.friends.sort((a, b) => b.phoneNumber-a.phoneNumber)
-      })
-      this.render();
-    } else if (this.state.flag === -1) {
-      this.setState({
-        flag: 1,
-        friends: this.state.friends.sort((a, b) =>  a.phoneNumber-b.phoneNumber)
-
+        friends: this.state.friends.sort((a, b) => b.phoneNumber - a.phoneNumber)
       })
       this.render();
     }
