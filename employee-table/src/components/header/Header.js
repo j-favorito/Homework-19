@@ -1,15 +1,17 @@
 import React from 'react';
 import './Header.css';
 
-
-function Header() {
+function Header(props) {
     return (
         <>
-            <div className="row">
-                <div className="col-lg-4"></div>
-                <h1 className="col-lg-4 main-head">Employee Table</h1>
-                <div className="col-lg-4"></div>
-            </div>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th onClick={props.firstHandleClick}>First Name</th>
+                    <th onClick={props.lastHandleClick}>Last Name</th>
+                    <th onClick={props.phoneHandleClick}>Phone Number</th>
+                </tr>
+            </thead>
         </>
     );
 }

@@ -1,19 +1,31 @@
 import React from 'react';
 import './Table.css';
 
+// {this.state.friends.map(friend => (
+//     <Table
+//       id={friend.id}
+//       key={friend.id}
+//       first={friend.firstName}
+//       last={friend.lastName}
+//       image={friend.image}
+//       phone={friend.phoneNumber}
+//     />
+//   ))}
+// </>
 
 function Table(props) {
     return (
         <>
-            <div className="row">
-                <div className="col-lg-2"></div>
-                <div className="col-lg-1 table-img-border"><img className="table-img"alt={props.name} src={props.image} /></div>
-                <div className="col-lg-2 table-data table-first">{props.first}</div>
-                <div className="col-lg-2 table-data table-last">{props.last}</div>
-                <div className="col-lg-2 table-data table-phone">{props.phone}</div>
-                <div className="col-lg-3"></div>
-            </div>
-
+        <tbody>
+            {props.friends.map(friend => (
+                <tr key={friend.id}>
+                    <td><img className="table-img" alt={friend.name} src={friend.image} /></td>
+                    <td>{friend.firstName}</td>
+                    <td>{friend.lastName}</td>
+                    <td>{friend.phoneNumber}</td>
+                </tr>
+            ))}
+            </tbody>
         </>
     );
 }

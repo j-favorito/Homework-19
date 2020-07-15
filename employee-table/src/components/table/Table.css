@@ -1,35 +1,5 @@
-.table-data{
-    text-align: center;
-    padding: 20px;
-}
-
 .table-img{
-text-align: center;
-height: 100px;
+    height: 100px;
+    width: auto;
 }
 
-.table-row{
-    border: solid;
-}
-
-.table-first{
-    border-top: solid;
-    border-bottom: solid;
-}
-
-.table-last{
-    border-top: solid;
-    border-bottom: solid;
-}
-
-.table-phone{
-    border-top: solid;
-    border-bottom: solid;
-    border-right: solid;
-}
-
-.table-img-border{
-    padding: 10px;
-    text-align: center;
-    border: solid;
-}
