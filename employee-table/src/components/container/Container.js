@@ -74,7 +74,7 @@ class Container extends Component {
 
   searchHandleClick = (e) => {
     e.preventDefault();
-    const friendSearch = this.state.permfriends.filter(friend => (friend.lastName === this.state.search))
+    const friendSearch = this.state.permfriends.filter(friend => (friend.lastName.toLowerCase() === this.state.search.toLowerCase()))
     console.log(friendSearch)
     this.setState({
       friends: friendSearch
