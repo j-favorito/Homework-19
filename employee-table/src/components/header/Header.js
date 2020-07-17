@@ -5,11 +5,11 @@ function Header(props) {
     return (
         <>
             <thead>
-                <tr>
-                    <th></th>
-                    <th onClick={props.firstHandleClick} className="table-head">First Name</th>
-                    <th onClick={props.lastHandleClick} className="table-head">Last Name</th>
-                    <th onClick={props.phoneHandleClick} className="table-head">Phone Number</th>
+                <tr className="row">
+                    <th className="col-lg-3">Sort By:</th>
+                    <th onClick={props.firstHandleClick} className="table-head col-lg-3">First Name</th>
+                    <th onClick={props.lastHandleClick} className="table-head col-lg-3">Last Name</th>
+                    <th onClick={props.phoneHandleClick} className="table-head col-lg-3">Phone Number</th>
                 </tr>
             </thead>
         </>
