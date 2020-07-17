@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Header from '../header/Header';
 import Table from '../table/Table';
+import Search from '../search/Search';
 import '../container/Container.css';
+
 
 
 
@@ -12,7 +14,7 @@ let flag = 0;
 class Container extends Component {
   constructor(props) {
     super(props)
-    this.state = { friends: props.friends, flag }
+    this.state = { friends: props.friends, permfriends: props.friends, flag, search: "", friendSearch: "" }
 
   }
 
@@ -22,15 +24,15 @@ class Container extends Component {
     if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
-        friends: this.state.friends.sort((a, b) => a.firstName.localeCompare(b.firstName))
+        friends: this.state.permfriends.sort((a, b) => a.firstName.localeCompare(b.firstName))
       })
-      this.render();
+      
     } else if (this.state.flag === 1) {
       this.setState({
         flag: -1,
-        friends: this.state.friends.sort((a, b) => b.firstName.localeCompare(a.firstName))
+        friends: this.state.permfriends.sort((a, b) => b.firstName.localeCompare(a.firstName))
       })
-      this.render();
+      
     }
   }
 
@@ -40,15 +42,15 @@ class Container extends Component {
     if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
-        friends: this.state.friends.sort((a, b) => a.lastName.localeCompare(b.lastName))
+        friends: this.state.permfriends.sort((a, b) => a.lastName.localeCompare(b.lastName))
       })
-      this.render();
+      
     } else if (this.state.flag === 1) {
       this.setState({
         flag: -1,
-        friends: this.state.friends.sort((a, b) => b.lastName.localeCompare(a.lastName))
+        friends: this.state.permfriends.sort((a, b) => b.lastName.localeCompare(a.lastName))
       })
-      this.render();
+      
     }
   }
 
@@ -58,16 +60,32 @@ class Container extends Component {
     if (this.state.flag === 0 || this.state.flag === -1) {
       this.setState({
         flag: 1,
-        friends: this.state.friends.sort((a, b) => a.phoneNumber - b.phoneNumber)
+        friends: this.state.permfriends.sort((a, b) => a.phoneNumber - b.phoneNumber)
       })
-      this.render();
+      
     } else if (this.state.flag === 1) {
       this.setState({
         flag: -1,
-        friends: this.state.friends.sort((a, b) => b.phoneNumber - a.phoneNumber)
+        friends: this.state.permfriends.sort((a, b) => b.phoneNumber - a.phoneNumber)
       })
-      this.render();
+      
     }
+  }
+
+  searchHandleClick = (e) => {
+    e.preventDefault();
+    const friendSearch = this.state.permfriends.filter(friend => (friend.lastName === this.state.search))
+    console.log(friendSearch)
+    this.setState({
+      friends: friendSearch
+    })
+  }
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
   }
 
 
@@ -75,13 +93,19 @@ class Container extends Component {
   render() {
     return (
       <>
-      <table className="friend-table">
-        <Header
-          firstHandleClick={this.firstHandleClick}
-          lastHandleClick={this.lastHandleClick}
-          phoneHandleClick={this.phoneHandleClick} />
-        <Table friends={this.state.friends} />
-      </table>
+        <center>
+          <Search
+            handleInputChange={this.handleInputChange}
+            searchHandleClick={this.searchHandleClick}
+          />
+        </center>
+        <table className="friend-table">
+          <Header
+            firstHandleClick={this.firstHandleClick}
+            lastHandleClick={this.lastHandleClick}
+            phoneHandleClick={this.phoneHandleClick} />
+          <Table friends={this.state.friends} />
+        </table>
       </>
     );
 

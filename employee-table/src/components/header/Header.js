@@ -7,9 +7,9 @@ function Header(props) {
             <thead>
                 <tr>
                     <th></th>
-                    <th onClick={props.firstHandleClick}>First Name</th>
-                    <th onClick={props.lastHandleClick}>Last Name</th>
-                    <th onClick={props.phoneHandleClick}>Phone Number</th>
+                    <th onClick={props.firstHandleClick} className="table-head">First Name</th>
+                    <th onClick={props.lastHandleClick} className="table-head">Last Name</th>
+                    <th onClick={props.phoneHandleClick} className="table-head">Phone Number</th>
                 </tr>
             </thead>
         </>
